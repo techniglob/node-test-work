@@ -19,10 +19,11 @@ const getAllPosts = async (req, res) => {
         );
 
         const [count] = await pool.execute(
-            "SELECT COUNT(*) as total FROM posts WHERE status = 'published'"
+            "SELECT COUNT(*) as total1 FROM posts WHERE status = 'published'"
         );
-
-        res.json({
+        /* console.log(count[0]?.total);
+    return;  */       
+        res.status(200).json({
             status: 'success',
             data: posts,
             meta: {
@@ -34,4 +35,8 @@ const getAllPosts = async (req, res) => {
     } catch (error) {
         res.status(500).json({ status: 'error', message: error.message });
     }
+};
+
+module.exports = {
+    getAllPosts
 };

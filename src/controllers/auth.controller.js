@@ -26,7 +26,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, password } = req.body;    
         
         const [users] = await pool.execute(
             'SELECT id, username, password_hash, role_id FROM users WHERE email = ?',
